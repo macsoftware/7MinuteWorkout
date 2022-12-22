@@ -4,21 +4,28 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
 import android.widget.Toast
+import uk.co.macsoftware.a7minuteworkout.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private var binding:ActivityMainBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
 
-        val frameLayoutStartButton: FrameLayout = findViewById(R.id.frameLayoutStart)
-        frameLayoutStartButton.setOnClickListener{
+        binding?.frameLayoutStart?.setOnClickListener{
             Toast.makeText(
                 this,
                 "Here we will start the exercise.",
                 Toast.LENGTH_LONG
             ).show()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
     }
 }
