@@ -1,5 +1,6 @@
 package uk.co.macsoftware.a7minuteworkout
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
@@ -16,11 +17,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding?.root)
 
         binding?.frameLayoutStart?.setOnClickListener{
-            Toast.makeText(
-                this,
-                "Here we will start the exercise.",
-                Toast.LENGTH_LONG
-            ).show()
+            val intent = Intent(this, ExerciseActivity::class.java)
+            startActivity(intent)
         }
     }
 
